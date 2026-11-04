@@ -84,7 +84,8 @@ setInterval(function() {
         enemies.splice(j, 1);
         bullets.splice(k, 1);
         score = score + 10;
-        document.getElementById("score").innerHTML = "Score: " + score;
+       level = 1 + Math.floor(score / 50);
+document.getElementById("score").innerHTML = "Score: " + score + " | Lives: " + lives + " | Level: " + level;
         break;
       }
     }

@@ -95,7 +95,7 @@ document.getElementById("score").innerHTML = "Score: " + score + " | Lives: " + 
         break;
       }
     }
-   for (var k = 0; k < bullets.length; k++) { if (boss && bullets[k].bx > boss.ex - 100 && bullets[k].bx < boss.ex + 200 && bullets[k].by > boss.ey - 200 && bullets[k].by < boss.ey + 100) { bullets.splice(k, 1); boss.hp = boss.hp - 1; if (boss.hp <= 0) { boss = null; score = score + 50; } break; } }
+   for (var k = 0; k < bullets.length; k++) { if (boss && bullets[k].bx > boss.ex - 20 && bullets[k].bx < boss.ex + 80 && bullets[k].by > boss.ey - 80 && bullets[k].by < boss.ey + 20) { bullets.splice(k, 1); boss.hp = boss.hp - 1; if (boss.hp <= 0) { boss = null; score = score + 50; } break; } }
 
   if (enemies[j] && enemies[j].ey > 470) {
 enemies.splice(j, 1);

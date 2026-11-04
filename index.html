@@ -50,6 +50,7 @@ function startGame() {
   enemies = [];
   boss = null;
   bossAaya = false;
+  bossLevel = 0;
   score = 0;
   over = false;
   lives = 3;
@@ -69,7 +70,7 @@ setInterval(function() {
   x.fillRect(0, 480, 400, 20);
   x.fillstyle = "yellow";
   x.fillRect(playerX, 460, 80, 15);
-  if (level >= 2 && !bossAaya) { bossAaya = true; boss = {ex: 160, ey: 0, hp: 5}; }
+ if (level >= 2 && !boss && bossLevel !== level) { bossLevel = level; boss = {ex: 160, ey: 0, hp: 5}; }
 if (boss) { boss.ey = boss.ey + 1; x.font = "80px Arial"; x.fillText("👹", boss.ex, boss.ey); }
 
   for (var i = 0; i < bullets.length; i++) {

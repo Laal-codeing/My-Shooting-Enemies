@@ -56,7 +56,7 @@ setInterval(function() {
   if (over) return;
   enemies.push({ex: Math.random() * 360, ey: 0});
 }, 900);
-setinterval(function() { shoot(); }, 250);
+setInterval(function() { shoot(); }, 250);
 setInterval(function() {
   x.clearRect(0, 0, 400, 500);
   x.fillStyle = "green";

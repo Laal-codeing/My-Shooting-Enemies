@@ -88,14 +88,19 @@ setInterval(function() {
       }
     }
 
-    if (enemies[j] && enemies[j].ey > 470) {
-      over = true;
-      x.fillStyle = "red";
-      x.font = "30px Arial";
-      x.fillText("GAME OVER!", 110, 250);
-      x.font = "20px Arial";
-      x.fillText("DOBARA KHELO dabao", 75, 290);
-        }
+  if (enemies[j] && enemies[j].ey > 470) {
+enemies.splice(j, 1);
+lives = lives - 1;
+document.getElementById("score").innerHTML = "Score: " + score + " | Lives: " + lives + " | Level: " + level;
+if (lives <= 0) {
+over = true;
+x.fillStyle = "red";
+x.font = "30px Arial";
+x.fillText("GAME OVER!", 110, 250);
+x.font = "20px Arial";
+x.fillText("DOBARA KHELO dabao", 75, 290);
+}
+}
   }
 }, 30);
 </script>

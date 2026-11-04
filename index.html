@@ -72,6 +72,7 @@ setInterval(function() {
   x.fillRect(playerX, 460, 80, 15);
  if (level >= 2 && !boss && bossLevel !== level) { bossLevel = level; boss = {ex: 160, ey: 0, hp: 5}; }
 if (boss) { boss.ey = boss.ey + 1; x.font = "80px Arial"; x.fillText("👹", boss.ex, boss.ey); }
+  if (boss && boss.ey > 480) { boss = null; }
 
   for (var i = 0; i < bullets.length; i++) {
     bullets[i].by = bullets[i].by - 12;

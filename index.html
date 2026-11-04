@@ -6,8 +6,8 @@
 <style>
 body { text-align: center; font-family: Arial; background: black; color: white; margin: 0; }
 h1 { color: yellow; font-size: 24px; }
-#score { font-size: 22px; color: white; }
-canvas { background: skyblue; border: 4px solid yellow; max-width: 95%; }
+#score { font-size: 22px; color: white; text-align: right; width: 400px; margin: auto; max-width: 95%;  }
+canvas { background: black; border: 4px solid yellow; max-width: 95%; }
 button { font-size: 20px; padding: 10px 20px; background: red; color: white; border: none; }
 p { color: white; }
 </style>
@@ -90,7 +90,9 @@ setInterval(function() {
       x.fillStyle = "red";
       x.font = "30px Arial";
       x.fillText("GAME OVER!", 110, 250);
-    }
+      x.font = "20px Arial";
+      x.fillText("DOBARA KHELO dabao", 75, 290);
+        }
   }
 }, 30);
 </script>

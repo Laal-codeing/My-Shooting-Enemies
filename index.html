@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shahzaib Ki Shooting Game</title>
+<style>
+body { text-align: center; font-family: Arial; background: black; color: white; margin: 0; }
+h1 { color: yellow; font-size: 24px; }
+#score { font-size: 22px; color: white; }
+canvas { background: skyblue; border: 4px solid yellow; max-width: 95%; }
+button { font-size: 20px; padding: 10px 20px; background: red; color: white; border: none; }
+p { color: white; }
+</style>
+</head>
+<body>
+<h1>🔫 SHAHZAIB KI SHOOTING GAME 🔫</h1>
+<div id="score">Score: 0</div>
+<canvas id="game" width="400" height="500"></canvas>
+<p>Mouse ghumao, Click karo, Goli chalao!</p>
+<button onclick="startGame()">DOBARA KHELO</button>
+
+<script>
+var c = document.getElementById("game");
+var x = c.getContext("2d");
+var playerX = 180;
+var bullets = [];
+var enemies = [];
+var score = 0;
+var over = false;
+
+c.addEventListener("mousemove", function(e) {
+  var r = c.getBoundingClientRect();
+  playerX = e.clientX - r.left - 20;
+});
+c.addEventListener("touchmove", function(e) {
+  var r = c.getBoundingClientRect();
+  playerX = e.touches[0].clientX - r.left - 20;
+});
+c.addEventListener("click", shoot);
+c.addEventListener("touchstart", shoot);
+
+function shoot() {
+  if (over) return;
+  bullets.push({bx: playerX + 18, by: 440});
+}
+
+function startGame() {
+  bullets = [];
+  enemies = [];
+  score = 0;
+  over = false;
+  document.getElementById("score").innerHTML = "Score: 0";
+}
+
+setInterval(function() {
+  if (over) return;
+  enemies.push({ex: Math.random() * 360, ey: 0});
+}, 900);
+
+setInterval(function() {
+  x.clearRect(0, 0, 400, 500);
+  x.fillStyle = "green";
+  x.fillRect(0, 480, 400, 20);
+  x.font = "40px Arial";
+  x.fillText("🧑‍✈️", playerX, 480);
+  x.fillStyle = "black";
+  x.fillRect(playerX + 18, 430, 4, 30);
+
+  for (var i = 0; i < bullets.length; i++) {
+    bullets[i].by = bullets[i].by - 12;
+    x.fillStyle = "red";
+    x.fillRect(bullets[i].bx, bullets[i].by, 5, 15);
+  }
+
+  for (var j = 0; j < enemies.length; j++) {
+    enemies[j].ey = enemies[j].ey + 3;
+    x.font = "35px Arial";
+    x.fillText("👹", enemies[j].ex, enemies[j].ey);
+
+    for (var k = 0; k < bullets.length; k++) {
+      if (bullets[k].bx > enemies[j].ex - 10 && bullets[k].bx < enemies[j].ex + 40 && bullets[k].by > enemies[j].ey - 30 && bullets[k].by < enemies[j].ey + 10) {
+        enemies.splice(j, 1);
+        bullets.splice(k, 1);
+        score = score + 10;
+        document.getElementById("score").innerHTML = "Score: " + score;
+        break;
+      }
+    }
+
+    if (enemies[j] && enemies[j].ey > 470) {
+      over = true;
+      x.fillStyle = "red";
+      x.font = "30px Arial";
+      x.fillText("GAME OVER!", 110, 250);
+    }
+  }
+}, 30);
+</script>
+</body>
+</html>

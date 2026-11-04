@@ -69,6 +69,8 @@ setInterval(function() {
   x.fillRect(0, 480, 400, 20);
   x.fillstyle = "yellow";
   x.fillRect(playerX, 460, 80, 15);
+  if (level >= 11 && !bossAaya) { bossAaya = true; boss = {ex: 160, ey: 0, hp: 5}; }
+if (boss) { boss.ey = boss.ey + 1; x.font = "80px Arial"; x.fillText("👹", boss.ex, boss.ey); }
 
   for (var i = 0; i < bullets.length; i++) {
     bullets[i].by = bullets[i].by - 12;

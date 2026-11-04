@@ -27,7 +27,8 @@ var bullets = [];
 var enemies = [];
 var score = 0;
 var over = false;
-
+var lives = 3;
+var level = 1;
 c.addEventListener("mousemove", function(e) {
   var r = c.getBoundingClientRect();
   playerX = e.clientX - r.left - 20;

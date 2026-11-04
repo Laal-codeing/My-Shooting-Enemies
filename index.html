@@ -50,7 +50,9 @@ function startGame() {
   enemies = [];
   score = 0;
   over = false;
-  document.getElementById("score").innerHTML = "Score: 0";
+  lives = 3;
+  level = 1;
+  document.getElementById("score").innerHTML = "Score: 0 | Lives: 3 | Level: 1";
 }
 
 setInterval(function() {
